@@ -1,4 +1,4 @@
-from builtins import print
+
 import time
 start_time = time.clock()
 
