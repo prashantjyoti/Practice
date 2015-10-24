@@ -1,3 +1,7 @@
+from builtins import print
+import time
+start_time = time.clock()
+
 __author__ = "prashant_jyoti"
 
 thousandDigits = ("73167176531330624919225119674426574742355349194934" +
@@ -24,10 +28,9 @@ thousandDigits = ("73167176531330624919225119674426574742355349194934" +
 def deriveSubstringAndCompare(string):
     substring, currentMaximum, resultList, longestString = [], 0, [], ""
 
-    for i in range(0,938):
+    for i in range(len(string)-12):
         product = 1
         substring = string[i:i+13]
-
         if substring.find('0') == -1:
             for i in substring:
                 product *= int(i)
@@ -47,7 +50,7 @@ print("maximum product is: ")
 print(results[0])
 print("longest string is: ")
 print(results[1])
-
+print (time.clock() - start_time, "seconds")
 
 
 
