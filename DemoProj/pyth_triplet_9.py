@@ -1,18 +1,7 @@
 __author__ = 'Prashant'
 
 from math import sqrt
-# pythagoreanTriplet = []
-# for i in range(1000):
-#     for j in range(1000):
-#         for k in range(1000):
-#             if i<j and j<k:
-#                 if (i**2 + j**2 == k**2) and (i+j+k == 1000):
-#                     pythagoreanTriplet.append(i)
-#                     pythagoreanTriplet.append(j)
-#                     pythagoreanTriplet.append(k)
-#
-#
-# print (pythagoreanTriplet)
+
 def findPythTriplet(list):
     pythTripletList = []
     for i in range(len(list)):
