@@ -28,16 +28,16 @@ for i in range(20):
         Matrix[i][j] = list_numbers_in_a_line[j]
 
     #print (Matrix)
-for i in range(20):
-    print(Matrix[i])
+#for i in range(20):
+    #print(Matrix[i])
 
-def hasRtoL(index1, index2):
+def hasLtoR(index1, index2):
     ret = True
     if index2>=17:
         ret = False
     return ret
 
-def hasLtoR(index1, index2):
+def hasRtoL(index1, index2):
     ret = True
     if index2<=3:
         ret = False
@@ -95,7 +95,7 @@ def right_upper_diagonal_product(Matrix, index1, index2):
         product =1
         j = index2
         for i in range(index1,index1-4,-1):
-            product *= int(Matrix[i-1][j+1])
+            product *= int(Matrix[i][j])
             j += 1
         return product
     else:
@@ -106,8 +106,8 @@ def left_lower_diagonal_product(Matrix, index1, index2):
         product = 1
         j = index2
         for i in range(index1,index1+4):
-            product *= int(Matrix[i+1][j-1])
-            j += 1
+            product *= int(Matrix[i][j])
+            j -= 1
         return product
     else:
         return 0
@@ -117,8 +117,8 @@ def left_upper_diagonal_product(Matrix, index1, index2):
         product = 1
         j = index2
         for i in range(index1,index1-4,-1):
-            product *= int(Matrix[i-1][j-1])
-            j += 1
+            product *= int(Matrix[i][j])
+            j -= 1
         return product
     else:
         return 0
@@ -162,15 +162,22 @@ def UtoB_product(Matrix, index1, index2):
 productList = []
 for i in range(8):
     productList.append(0)
+#print("pdl: ")
+#print(productList)
 
 ansList = []
-for i in range(4):
+for i in range(5):
     ansList.append(0)
+#print("anl: ")
+#print(ansList)
 
 globalMax = 0
 
 for i in range(len(Matrix)):
     for j in range(len(Matrix)):
+        #print(Matrix)
+        #print(i)
+        #print(j)
         productList[0] = LtoR_product(Matrix,i,j)
         productList[1] = RtoL_product(Matrix,i,j)
         productList[2] = BtoU_product(Matrix,i,j)
@@ -183,8 +190,11 @@ for i in range(len(Matrix)):
         if(max(productList) > globalMax):
             globalMax = max(productList)
             ansList[0] = max(productList)
-            ansList[1] = i
-            ansList[2] = j
-            ansList[3] = Matrix[i][j]
+            ansList[1] = Matrix[i][j]
+            ansList[2] = i
+            ansList[3] = j
+            ansList[4] = productList.index(globalMax)
 
+
+#print("final step")
 print (ansList)
