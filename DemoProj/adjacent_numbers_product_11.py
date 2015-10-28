@@ -1,29 +1,3 @@
-if 00 comes in any direction then dont multiiply in that direction
-
-def right_lower_diagonal_product(index1, index2):
-  return product
-  
-def right_upper_diagonal_product(index1, index2):
-  return product
-  
-def left_lower_diagonal_product(index1, index2):
-  return product
-  
-def left_lower_diagonal_product(index1, index2):
-  return product
-  
-def acrossLtoR_product(index1, index2):
-  return product
-  
-def acrossRtoL_product(index1, index2):
-  return product
-  
-def horizontalBtoU_product(index1, index2):
-  return product
-  
-def horizontalUtoB_product(index1, index2):
-  return product
-
 make a list
 for any given number, find all the products, append them in a list
 find max of list, store index of number and its max product(if greater than prev max) in any direction in global variables
@@ -54,3 +28,131 @@ for i in range(20):
 #print (Matrix)
 for i in range(20):
     print(Matrix[i])
+
+def hasRtoL(index1, index2):
+    ret = True
+    if index2>=17:
+        ret = False
+    return ret
+
+def hasLtoR(index1, index2):
+    ret = True
+    if index2<=3:
+        ret = False
+    return ret
+
+def hasUtoB(index1, index2):
+    ret = True
+    if index1>=17:
+        ret = False
+    return ret
+
+def hasBtoU(index1, index2):
+    ret = True
+    if index1<3:
+        ret = False
+    return ret
+
+def hasRightLowerDiag(index1, index2):
+    ret = True
+    if index1>16 or index2>16:
+        ret = False
+    return ret
+
+def hasLeftUpperDiag(index1, index2):
+    ret = True
+    if index1<3 or index2<3:
+        ret = False
+    return ret
+
+def hasLeftLowerDiag(index1, index2):
+    ret = True
+    if index1>16 or index2<3:
+        ret = False
+    return ret
+
+def hasRightUpperDiag(index1, index2):
+    ret = True
+    if index1<3 or index2>16:
+        ret = False
+    return ret
+
+def right_lower_diagonal_product(Matrix, index1, index2):
+    if(hasRightLowerDiag(index1,index2)):
+        product = 1
+        j = index2
+        for i in range(index1,index1+4):
+            product *= Matrix[i][j]
+            j += 1
+        return product
+    else:
+        return 0
+
+def right_upper_diagonal_product(Matrix, index1, index2):
+    if(hasRightUpperDiag(index1,index2)):
+        product =1
+        j = index2
+        for i in range(index1,index1-4,-1):
+            product *= Matrix[i-1][j+1]
+            j += 1
+        return product
+    else:
+        return 0
+
+def left_lower_diagonal_product(Matrix, index1, index2):
+    if(hasLeftLowerDiag(index1,index2)):
+        product = 1
+        j = index2
+        for i in range(index1,index1+4):
+            product *= Matrix[i+1][j-1]
+            j += 1
+        return product
+    else:
+        return 0
+
+def left_upper_diagonal_product(Matrix, index1, index2):
+    if(hasLeftUpperDiag(index1,index2)):
+        product = 1
+        j = index2
+        for i in range(index1,index1-4,-1):
+            product *= Matrix[i-1][j-1]
+            j += 1
+        return product
+    else:
+        return 0
+
+def LtoR_product(Matrix, index1, index2):
+    if(hasLtoR(index1,index2)):
+        product = 1
+        for i in range(index2,index2+4):
+            product *= Matrix[index1][i]
+        return product
+    else:
+        return 0
+
+def RtoL_product(Matrix, index1, index2):
+    if(hasRtoL(index1,index2)):
+        product = 1
+        for i in range(index2,index2-4,-1):
+            product *= Matrix[index1][i]
+        return product
+    else:
+        return 0
+
+def BtoU_product(Matrix, index1, index2):
+    if(hasBtoU(index1,index2)):
+        product = 1
+        for i in range(index1,index1-4,-1):
+            product *= Matrix[i][index2]
+        return product
+    else:
+        return 0
+
+def UtoB_product(Matrix, index1, index2):
+    if(hasUtoB(index1,index2)):
+        product = 1
+        for i in range(index1,index1+4):
+            product *= Matrix[i][index2]
+        return product
+    else:
+        return 0
